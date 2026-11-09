@@ -1,4 +1,4 @@
-# MYHUB Real Data Edition v1.0
+# MYHUB Real Data Edition v2.0
 
 ## Isi paket
 - `index.html`, `styles.css`, `app.js`: aplikasi.
@@ -37,3 +37,10 @@
 3. Seret folder `MYHUB_Real_Data` ke area upload Netlify Drop.
 4. Netlify memberi URL HTTPS. Tambahkan domain tersebut sebagai Authorized JavaScript origin di Google Cloud Console.
 5. Jika URL berubah, perbarui Authorized JavaScript origins.
+
+
+## Pembaruan v2.0
+- Form transaksi memiliki kolom tujuan/keperluan agar pengeluaran tercatat jelas.
+- Ringkasan pengeluaran berdasarkan kategori mengikuti filter periode (bulan ini/semua).
+- Riwayat transaksi menampilkan tujuan, kategori, akun, tanggal, dan nominal.
+- Transaksi dapat diedit atau dihapus dengan konfirmasi; perubahan tetap autosave ke IndexedDB dan dijadwalkan untuk backup Drive saat terhubung.
