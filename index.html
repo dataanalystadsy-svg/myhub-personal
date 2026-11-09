@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#17243b"><meta name="description" content="MYHUB personal command center">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg">
+<title>MYHUB — Personal Command Center</title><link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="app">
+<header class="topbar"><div><div class="eyebrow">PERSONAL COMMAND CENTER</div><div class="brand">MYHUB</div></div><button class="avatar" id="profileBtn" aria-label="Pengaturan">M</button></header>
+<main>
+<section class="screen active" id="home">
+ <div class="greeting"><div><div class="muted tiny" id="today"></div><h1>Halo, selamat datang 👋</h1><p class="muted">Semua hal pentingmu, dalam satu tempat.</p></div><span class="live-pill">REAL DATA</span></div>
+ <div class="hero"><div class="hero-label">TOTAL SALDO TERCATAT</div><div class="hero-amount" id="balance">Rp0</div><div class="hero-grid"><div><span>Pemasukan bulan ini</span><b id="income">Rp0</b></div><div><span>Pengeluaran bulan ini</span><b id="expense">Rp0</b></div></div></div>
+ <div class="section-head"><h2>Ringkasan</h2><span class="muted tiny">Bulan ini</span></div>
+ <div class="stats"><article class="stat"><span class="stat-icon">↗</span><small>Net cash flow</small><b id="net">Rp0</b></article><article class="stat"><span class="stat-icon gold">✓</span><small>Tugas belum selesai</small><b id="pending">0</b></article></div>
+ <div class="section-head"><h2>Aktivitas terbaru</h2><span class="muted tiny">Terakhir diperbarui</span></div><div class="panel" id="activity"></div>
+ <div class="quick"><button data-add="note"><i>✎</i>Catatan</button><button data-add="task"><i>☑</i>Tugas</button><button data-add="expense"><i>−</i>Pengeluaran</button><button data-add="income"><i>＋</i>Pemasukan</button></div>
+</section>
+<section class="screen" id="notes"><div class="page-head"><div><div class="eyebrow">CAPTURE YOUR IDEAS</div><h1>Notes</h1></div><button class="primary" data-add="note">＋ Baru</button></div><input class="search" id="noteSearch" placeholder="Cari catatan..."><div class="chips" id="noteFilters"><button class="chip active" data-filter="All">Semua</button><button class="chip" data-filter="Personal">Personal</button><button class="chip" data-filter="Work">Work</button><button class="chip" data-filter="Meeting">Meeting</button></div><div class="list" id="noteList"></div></section>
+<section class="screen" id="tasks"><div class="page-head"><div><div class="eyebrow">PLAN & EXECUTE</div><h1>Tasks</h1></div><button class="primary" data-add="task">＋ Baru</button></div><div class="chips" id="taskFilters"><button class="chip active" data-filter="All">Semua</button><button class="chip" data-filter="Personal">Personal</button><button class="chip" data-filter="Work">Work</button></div><div class="list" id="taskList"></div></section>
+<section class="screen" id="finance"><div class="page-head"><div><div class="eyebrow">KNOW YOUR MONEY</div><h1>Finance</h1></div><button class="primary" data-add="expense">＋ Catat</button></div><div class="finance-total"><small>Saldo bersih tercatat</small><b id="fBalance">Rp0</b><div class="money-pair"><span class="green" id="fIncome">Income Rp0</span><span class="red" id="fExpense">Expense Rp0</span></div></div><div class="section-head"><h2>Pengeluaran berdasarkan kategori</h2><span class="muted tiny">Periode terpilih</span></div><div class="panel breakdown" id="expenseBreakdown"></div><div class="section-head"><h2>Riwayat transaksi</h2><select id="period"><option value="month">Bulan ini</option><option value="all">Semua</option></select></div><div class="list" id="transactionList"></div></section>
+<section class="screen" id="settings"><div class="eyebrow">PREFERENCES & DATA</div><h1>Pengaturan</h1>
+ <div class="panel backup-panel"><div class="backup-title"><span class="cloud-icon">☁</span><div><b>Google Drive Backup</b><small id="driveStatus">Belum terhubung</small></div></div><div class="drive-meta"><span id="lastBackup">Backup terakhir: belum pernah</span><span id="syncStatus">Lokal aktif</span></div><label class="field-label" for="clientId">Google OAuth Web Client ID</label><input id="clientId" class="search" placeholder="xxxx.apps.googleusercontent.com"><button class="primary full" id="connectDrive">Hubungkan Google Drive</button><div class="button-row"><button class="secondary" id="backupNow">Backup sekarang</button><button class="secondary" id="restoreDrive">Pulihkan backup</button></div><p class="hint">Backup disimpan di area data aplikasi MYHUB pada Google Drive (appDataFolder), bukan folder publik. Hubungkan kembali setelah membuka sesi browser baru.</p></div>
+ <div class="panel settings-list"><button id="exportBtn">⇩ <span><b>Export file backup</b><small>Simpan JSON ke perangkat / Drive</small></span></button><button id="importBtn">⇧ <span><b>Import file backup</b><small>Pulihkan dari file JSON</small></span></button><button class="danger" id="clearBtn">⌫ <span><b>Hapus seluruh data lokal</b><small>Tindakan ini tidak bisa dibatalkan</small></span></button></div><p class="muted tiny version">MYHUB Real Data Edition · v2.0</p>
+</section>
+</main>
+<nav class="bottom-nav"><button class="active" data-page="home">⌂<small>Home</small></button><button data-page="notes">▤<small>Notes</small></button><button class="add-nav" id="quickAdd"><i>＋</i><small>Tambah</small></button><button data-page="tasks">☷<small>Tasks</small></button><button data-page="finance">◉<small>Finance</small></button></nav>
+</div>
+<div class="modal-bg" id="modalBg"><div class="modal"><div class="modal-head"><h2 id="modalTitle">Tambah</h2><button class="close" id="closeModal">×</button></div><form id="entryForm"><div id="formFields"></div><div class="form-actions"><button type="button" class="secondary" id="cancelModal">Batal</button><button class="primary">Simpan</button></div></form></div></div>
+<input type="file" id="fileInput" accept="application/json,.json" hidden><div class="toast" id="toast"></div>
+<script src="./config.js"></script><script src="./app.js"></script>
+</body></html>
